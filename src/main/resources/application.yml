@@ -1,0 +1,44 @@
+#logging:
+#  level:
+#    root: DEBUG
+
+spring:
+  application:
+    name: "gatewayserver"
+  config:
+    import: "optional:configserver:http://localhost:8071/"
+  cloud:
+    gateway:
+      discovery:
+        locator:
+          enabled: true
+
+#actuator config
+management:
+  endpoints:
+    web:
+      exposure:
+        # * means we've exposed all our actuator endpoints
+        include: "*"
+  endpoint:
+    gateway:
+      enabled: true
+  info:
+    env:
+      enabled: true
+
+# Fetching eureka related configs from the config-server, could've kept here as well
+#eureka:
+#  instance:
+#    preferIpAddress: true
+#  client:
+#    fetchRegistry: true
+#    registerWithEureka: true
+#    serviceUrl:
+#      defaultZone: http://localhost:8070/eureka/
+
+info:
+  app:
+    name: "gatewayserver"
+    description: "Gateway Server of Bank Application"
+    version: 1.0.0
