@@ -1,6 +1,8 @@
-#logging:
-#  level:
-#    root: DEBUG
+logging:
+  level:
+    com:
+      bank:
+        gatewayserver: DEBUG
 
 spring:
   application:
@@ -11,7 +13,8 @@ spring:
     gateway:
       discovery:
         locator:
-          enabled: true
+          enabled: false
+          lowerCaseServiceId: true
 
 #actuator config
 management:
