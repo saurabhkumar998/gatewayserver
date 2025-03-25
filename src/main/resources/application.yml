@@ -15,6 +15,9 @@ spring:
         locator:
           enabled: false
           lowerCaseServiceId: true
+      httpclient:
+        connect-timeout: 1000
+        response-timeout: 2s
 
 #actuator config
 management:
@@ -45,3 +48,11 @@ info:
     name: "gatewayserver"
     description: "Gateway Server of Bank Application"
     version: 1.0.0
+
+resilience4j.circuitbreaker:
+  configs:
+    default:
+      slidingWindowSize: 10
+      permittedNumberOfCallsInHalfOpenState: 2
+      failureRateThreshold: 50
+      waitDuration InOpenState: 10000
